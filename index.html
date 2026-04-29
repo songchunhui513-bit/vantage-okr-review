@@ -377,158 +377,143 @@ function SaveBar(){
   return <div className="save-bar"><button onClick={save} className={s==='saved'?'done':''}>{s==='saved'?'✓ Saved':'💾 Save'}</button><button onClick={dl} className={s==='dl'?'done':''}>{s==='dl'?'✓ Downloaded':'⬇ Download'}</button></div>;
 }
 
-// ═══ Data (complete from image — 4 Objectives, 8 KRs, Strategy Map) ═══
+// ═══ Data (verified from image — 3 Objectives, 6 KRs, all owners, correct numbers) ═══
 const DATA={
   title:'全球营销团队 Q1 OKR 复盘',titleEn:'Global Marketing Team · Q1 OKR Review',
   subtitle:'2026 年度第一季度回顾与策略复盘',subtitleEn:'2026 First Quarter Review & Strategy Recap',
-  date:'2026.03.31',
+  date:'2026.04.14',nextReview:'2026.07.10',
+  statusLegend:[
+    {color:'#34d399',label:'On Track',desc:'进度符合计划'},
+    {color:'#fbbf24',label:'At Risk',desc:'进度滞后，已有缓解方案'},
+    {color:'#f87171',label:'Off Track',desc:'进度停滞或关键里程碑未达'},
+    {color:'#6b7a92',label:'Not Started',desc:'尚未启动'},
+  ],
+  summaryMetrics:[
+    {label:'总用户触达',labelEn:'Total User Reach',value:'2.2M',sub:'年度目标 8M',subEn:'Annual Goal 8M',icon:'users'},
+    {label:'品牌知名度增长',labelEn:'Brand Awareness Growth',value:'+14.5%',sub:'同比',subEn:'YoY',icon:'trend',good:true},
+    {label:'关键区域市场份额',labelEn:'Key Region Market Share',value:'6.5%',sub:'平均',subEn:'Average',icon:'chart'},
+    {label:'总体评审状态',labelEn:'Overall Status',value:'On Track',icon:'check',good:true},
+  ],
   headlineMetrics:[
-    {label:'新增活跃用户',labelEn:'New Active Users',value:'47.2K',sub:'目标 45K',subEn:'Target 45K',icon:'users',good:true},
-    {label:'平均获客成本',labelEn:'Avg CAC',value:'$114',sub:'目标 <$120',subEn:'Target <$120',icon:'dollar',good:true},
-    {label:'ROI',labelEn:'ROI',value:'3.2×',sub:'目标 3.5×',subEn:'Target 3.5×',icon:'chart'},
-    {label:'品牌触达',labelEn:'Brand Reach',value:'120M+',icon:'globe',good:true},
-    {label:'Top 3 关键词',labelEn:'Top 3 Keywords',value:'115',icon:'key'},
-    {label:'AUM 增长（UAE）',labelEn:'AUM Growth (UAE)',value:'+22%',icon:'trend',good:true},
+    {label:'Q1 用户触达',labelEn:'Q1 User Reach',value:'2.2M',sub:'年度目标 8M',subEn:'Annual 8M',icon:'users'},
+    {label:'品牌知名度',labelEn:'Brand Awareness',value:'+14.5%',sub:'同比',subEn:'YoY',icon:'trend',good:true},
+    {label:'区域市场份额',labelEn:'Regional Share',value:'6.5%',sub:'平均',subEn:'Avg',icon:'chart'},
+    {label:'CPA 降幅',labelEn:'CPA Reduction',value:'-6.2%',sub:'超目标 -5%',subEn:'Target -5%',icon:'dollar',good:true},
+    {label:'新增 KOL',labelEn:'New KOLs',value:'12',sub:'目标 10',subEn:'Target 10',icon:'star',good:true},
+    {label:'合规审计',labelEn:'Compliance Audit',value:'0',sub:'重大发现',subEn:'Major Findings',icon:'shield',good:true},
   ],
   objectives:[
-    // ═══ O1: Build Vantage into a global top-tier brand ═══
-    {id:'o1',status:'进行中',statusEn:'In Progress',statusColor:T.accent,
-      title:'将 Vantage 打造为全球顶级品牌',titleEn:'Build Vantage into a Global Top-Tier Brand',
-      subtitle:'组织架构 · 品牌标识 · 品牌活动',subtitleEn:'Organization · Brand Identity · Brand Campaigns',
+    // ═══ O1: Brand Building ═══
+    {id:'o1',status:'At Risk',statusEn:'At Risk',statusColor:T.amber,
+      title:'提升 Vantage 全球影响力与品牌一致性',titleEn:'Build Vantage into a Global Top-Tier Brand',
+      subtitle:'品牌视觉 · KOL 网络 · 品牌生态',subtitleEn:'Brand Visual · KOL Network · Brand Ecosystem',
       krs:[
         {id:'kr1.1',code:'KR 1.1',
-          title:'重组营销组织架构，提升产出质量和效率',titleEn:'Restructure Marketing Organization to Match New Strategy and Improve Output Quality & Efficiency',
-          tags:['CEO Office','HR','组织架构'],
-          summary:'新架构已落地，5 名高管入职，效率提升 15%',summaryEn:'New structure implemented, 5 senior hires onboarded, 15% efficiency improvement',
-          result:'组织架构优化 100% 完成。产出效率提升 20%（同比）。人才质量指标提升。新架构已落地并沟通完毕。5 名关键高级人才入职。内部效率审计显示活动周转时间缩短 15%。',
-          resultEn:'Org structure optimization 100% complete. Output efficiency +20% YoY. Talent quality index improved. New org chart finalized and communicated. 5 key senior hires onboarded. Internal efficiency audit shows 15% improvement in campaign turnaround time.',
-          annual:['组织架构优化（100% 完成）','产出效率提升 20%（同比）','人才质量指标提升'],annualEn:['Org structure optimization (100% complete)','Output efficiency +20% YoY','Talent quality index improvement'],
-          metrics:[{label:'架构完成度',labelEn:'Structure Completion',value:'100%',good:true,icon:'check'},{label:'效率提升',labelEn:'Efficiency Gain',value:'+15%',good:true,icon:'trend',accent:true},{label:'高管入职',labelEn:'Senior Hires',value:'5',icon:'users'}],
-          owner:'CEO Office / HR',
-          improvement:'中层管理角色交接比预期慢，造成临时沟通摩擦',improvementEn:'Some role transitions in middle management taking longer than expected, causing temporary communication friction'},
+          title:'打造全球统一的品牌视觉与叙事，提升核心市场品牌意识',titleEn:'Build Global Brand Awareness & Preference (Focus on Tier 1 Markets)',
+          tags:['Brand & Creative','VIS v2.0','UK','AU','DE'],
+          summary:'VIS v2.0 完成 80%，「Next Level Trading」活动延迟 2 周上线，Q1 触达 512K（目标 600K）',summaryEn:'VIS v2.0 80% done, "Next Level Trading" launched 2 weeks late, Q1 reach 512K (target 600K)',
+          result:'全球品牌标识系统（VIS）v2.0 已完成并推广至 80% 区域团队。「Next Level Trading」品牌活动在英国/澳洲上线（延迟 2 周）。Q1 实际触达 512,430 月活用户（目标 600K，达成率 85.4%）。英国品牌知名度调查 18%（目标 20%）。',
+          resultEn:'Global Brand Identity System (VIS) v2.0 complete and rolled out to 80% of regional teams. "Next Level Trading" campaign launched in UK/AU (2 weeks behind schedule). Actual Q1 reach: 512,430 MAU (85.4% of 600K target). UK brand awareness survey: 18% (target 20%).',
+          annual:['全球月活用户达 300 万','核心 Tier 1 市场（UK/AU/DE）品牌知名度达 25%','品牌偏好/考虑度提升 15%'],annualEn:['Reach 3M monthly active users globally','Brand awareness in Tier 1 markets (UK/AU/DE) to reach 25%','Brand preference/consideration +15%'],
+          metrics:[{label:'Q1 触达（实际）',labelEn:'Q1 Reach (Actual)',value:'512,430',sub:'目标 600K',subEn:'Target 600K',icon:'users'},{label:'达成率',labelEn:'Achievement',value:'85.4%',icon:'chart'},{label:'UK 品牌知名度',labelEn:'UK Awareness',value:'18%',target:'20%',icon:'trend'},{label:'VIS v2.0 推广',labelEn:'VIS v2.0 Rollout',value:'80%',icon:'shield'}],
+          status:'🟡',owner:'Jeff / Brand Team',
+          improvement:'UK 法律审批瓶颈导致活动延迟。德国市场素材需更多本地化。社交媒体互动率低于基准（实际 1.2% vs 目标 2.5%）。',improvementEn:'Campaign launch delay due to legal approval bottlenecks in UK. German market assets require more localization. Social media engagement rate lower than benchmark (1.2% actual vs 2.5% target).'},
         {id:'kr1.2',code:'KR 1.2',
-          title:'建立统一的全球品牌标识和声音',titleEn:'Establish a Unified Global Brand Identity and Voice Across All Touchpoints',
-          tags:['Brand Director','Brand Book 2.0','VI/ToV'],
-          summary:'Brand Book 2.0 完成，英国/澳洲合规，拉美延迟',summaryEn:'Brand Book 2.0 done, UK/AU compliant, LATAM delayed',
-          result:'品牌视觉识别（VI）和语调（ToV）全面改革。全球合规率 100%。品牌一致性审计得分 >90%。Brand Book 2.0 已分发。英国/澳洲已合规。拉美网站刷新因技术问题延迟。完成度 80%。',
-          resultEn:'Brand VI and Tone of Voice overhaul. 100% compliance target. Brand consistency audit score >90%. Brand Book 2.0 distributed. UK/AU compliant. LATAM website refresh delayed by technical issues. 80% completed.',
-          annual:['品牌 VI 和 ToV 全面改革','100% 合规率（所有区域渠道）','品牌一致性审计得分 >90%'],annualEn:['Brand VI and ToV overhaul','100% compliance across all regional channels','Brand consistency audit score >90%'],
-          metrics:[{label:'Brand Book',labelEn:'Brand Book 2.0',value:'完成',valueEn:'Done',good:true,icon:'shield',accent:true},{label:'完成度',labelEn:'Completion',value:'80%',icon:'chart'},{label:'英国/澳洲',labelEn:'UK/AU',value:'合规',valueEn:'Compliant',good:true,icon:'check'}],
-          owner:'Global Brand Director',
-          improvement:'全球品牌团队与本地 IT 执行团队之间需要更好的协调',improvementEn:'Need better coordination between global brand team and local IT execution teams'},
+          title:'提升全球社交媒体与 KOL 领域的行业领导地位',titleEn:'Establish Global Thought Leadership & KOL Network',
+          tags:['Social Media','PR','KOL','Webinar','TikTok'],
+          summary:'粉丝 +168.5K（超目标 112%），12 个 KOL 签约，TikTok 东南亚 +40% MoM',summaryEn:'Followers +168.5K (112% of target), 12 KOLs onboarded, TikTok SEA +40% MoM',
+          result:'全球社交媒体粉丝增长 168,500（目标 150K，达成 112%）。12 个 Tier-1 KOL 新签约（聚焦拉美和东南亚）。2 场全球网络研讨会完成，总参与 4,500+。TikTok 东南亚频道环比增长 40%。',
+          resultEn:'Total followers increased by 168,500 (112% of 150K target). 12 new Tier-1 KOLs onboarded (Focus: LATAM and SEA). 2 global webinars completed; total attendance 4,500+. TikTok SEA channel saw 40% MoM growth.',
+          annual:['全球粉丝达 150 万','签约 50+ 顶级金融 KOL','全平台平均互动率 3.5%'],annualEn:['Global social following to reach 1.5M','Establish partnerships with 50+ top-tier financial KOLs','Average engagement rate 3.5% across platforms'],
+          metrics:[{label:'粉丝增长（实际）',labelEn:'Follower Growth',value:'168,500',sub:'目标 150K',subEn:'Target 150K',good:true,icon:'users',accent:true},{label:'达成率',labelEn:'Achievement',value:'112%',good:true,icon:'chart'},{label:'新 KOL 签约',labelEn:'New KOLs',value:'12',sub:'目标 10',subEn:'Target 10',good:true,icon:'star'},{label:'研讨会参与',labelEn:'Webinar Attendance',value:'4,500+',good:true,icon:'globe'},{label:'TikTok SEA 增长',labelEn:'TikTok SEA',value:'+40% MoM',good:true,icon:'trend'}],
+          status:'🟢',owner:'Sarah / Social Team',
+          improvement:'Twitter（X）在西方市场表现停滞，需新内容策略。LinkedIn 专业内容在获客方面表现好但需更高频率。',improvementEn:'Twitter (X) performance plateauing in Western markets; need new content strategy. LinkedIn professional content performing well for lead gen but needs higher frequency.'},
         {id:'kr1.3',code:'KR 1.3',
-          title:'执行全球一级品牌知名度活动',titleEn:'Execute Global Tier-1 Brand Awareness Campaigns',
-          tags:['McLaren F1','Trade the World','PR'],
-          summary:'McLaren F1 续约，「Trade the World」上线，触达 1.2 亿',summaryEn:'McLaren F1 renewed, Trade the World launched, 120M reach',
-          result:'触达超过 1.2 亿（Q1）。品牌情绪 78%（目标 >75%）。提及量同比 +40%。McLaren F1 合作续约。「Trade the World」活动上线。F1 合作在中东和欧洲驱动高互动。',
-          resultEn:'Reach exceeded 120M in Q1. Brand sentiment at 78% (target >75%). Mention volume +40% YoY. McLaren F1 partnership renewed. "Trade the World" campaign launched. F1 partnership driving high engagement in MENA and Europe.',
-          annual:['触达 >5 亿','品牌情绪 >75% 正面','提及量同比 +40%'],annualEn:['Reach >500M','Brand sentiment >75% positive','Mention volume +40% YoY'],
-          metrics:[{label:'Q1 触达',labelEn:'Q1 Reach',value:'120M+',good:true,icon:'globe',accent:true},{label:'品牌情绪',labelEn:'Sentiment',value:'78%',target:'>75%',good:true,icon:'heart'},{label:'提及量增长',labelEn:'Mention Volume',value:'+40% YoY',good:true,icon:'trend'}],
-          owner:'Brand Marketing Team',
-          improvement:'东南亚活动效果低于预期，需要本地化创意',improvementEn:'Campaign performance in SEA was lower than expected; needs localized creative'},
+          title:'建立全面的品牌生态系统',titleEn:'Build a Comprehensive Brand Ecosystem',
+          tags:['Vantage Rewards','McLaren','Fintech','Partnerships'],
+          summary:'Rewards 技术蓝图 100% 完成，McLaren 续约，3/5 金融科技合作签约',summaryEn:'Rewards blueprint 100% complete, McLaren extended, 3/5 fintech partnerships signed',
+          result:'「Vantage Rewards」忠诚度计划技术蓝图 100% 完成，Beta 测试定于 Q2。McLaren 合作续约并获得额外激活资源。3/5 金融科技合作签约（TradingView、MetaTrader 更新、东南亚本地钱包）。',
+          resultEn:'"Vantage Rewards" loyalty program technical blueprint 100% complete; Beta testing scheduled for Q2. McLaren partnership extended with additional activation slots secured. 3 out of 5 fintech partnerships signed (TradingView, MetaTrader updates, SEA local wallet).',
+          annual:['全球推出「Vantage Rewards」忠诚度计划','赞助 2 场全球体育赛事','品牌生态收入贡献达 15%'],annualEn:['Launch "Vantage Rewards" loyalty program globally','Sponsorship of 2 major global sporting events','Brand ecosystem revenue contribution to reach 15%'],
+          metrics:[{label:'Rewards 蓝图',labelEn:'Rewards Blueprint',value:'100%',good:true,icon:'check',accent:true},{label:'McLaren 续约',labelEn:'McLaren Extended',value:'完成',valueEn:'Done',good:true,icon:'zap'},{label:'金融科技合作',labelEn:'Fintech Partners',value:'3/5',icon:'link'}],
+          status:'🟢',owner:'Mike / Partnerships',
+          improvement:'新兴市场（拉美/非洲）需要更多本地化奖励。移动端奖励追踪集成落后于桌面版。',improvementEn:'Need more localized rewards for emerging markets (LATAM/Africa). Mobile app rewards tracking integration behind desktop version.'},
       ]},
-    // ═══ O2: Drive holistic growth ═══
-    {id:'o2',status:'达标中',statusEn:'Meeting Targets',statusColor:T.green,
-      title:'驱动整体增长，持续扩大规模、结构、效率优势',titleEn:'Drive Holistic Growth — Scaling Volume, Structure & Efficiency',
-      subtitle:'数据驱动运营 · 转化漏斗优化',subtitleEn:'Data-Driven Operations · Conversion Funnel Optimization',
+    // ═══ O2: Growth & Efficiency ═══
+    {id:'o2',status:'On Track',statusEn:'On Track',statusColor:T.green,
+      title:'注重增长质量，通过精细化运营提升全渠道获客效率',titleEn:'Drive Holistic Growth — Scaling Volume, Structure & Efficiency',
+      subtitle:'精准获客 · SEO/ASO 优化',subtitleEn:'Precision Acquisition · SEO/ASO Optimization',
       krs:[
         {id:'kr2.1',code:'KR 2.1',
-          title:'加强数据驱动精细化用户运营，提升绩效',titleEn:'Strengthen Data-Driven and Granular Key User Operations; Improve Performance',
-          tags:['Growth Team','Performance','NAU','CAC'],
-          summary:'NAU 47.2K（超目标），CAC $114（低于目标），ROI 3.2×',summaryEn:'NAU 47.2K (above target), CAC $114 (below target), ROI 3.2x',
-          result:'新活跃用户（NAU）+30% 同比。CAC -15%。ROI >3.5×。Q1 目标 NAU 45K，实际 47,243。CAC 平均 $114.20（目标 <$120）。ROI 3.2×（略低于目标，因初期活动支出较高）。',
-          resultEn:'New Active Users (NAU) +30% YoY. CAC -15%. ROI >3.5x target. Q1 target NAU 45K, actual 47,243. Avg CAC $114.20 (target <$120). ROI 3.2x (slightly below target due to high initial campaign spend).',
-          annual:['NAU 同比 +30%','CAC 同比 -15%','ROI >3.5×'],annualEn:['NAU +30% YoY','CAC -15% YoY','ROI >3.5x'],
-          metrics:[{label:'NAU（实际）',labelEn:'NAU (Actual)',value:'47,243',sub:'目标 45K',subEn:'Target 45K',good:true,icon:'users',accent:true},{label:'CAC（实际）',labelEn:'CAC (Actual)',value:'$114.20',sub:'目标 <$120',subEn:'Target <$120',good:true,icon:'dollar'},{label:'ROI',labelEn:'ROI',value:'3.2×',sub:'目标 3.5×',subEn:'Target 3.5×',icon:'chart'}],
-          owner:'Growth / Performance Team',
-          improvement:'高价值用户增长良好，但低存款用户留存下降。需要改进小账户的入门引导流程。',improvementEn:'High-value user segment growing well, but retention for low-deposit users is dropping. Need better onboarding for small accounts.'},
+          title:'依靠基础设施与数据赋能，实现精准获客',titleEn:'Strengthen Data-Driven Infrastructure and Precision Acquisition',
+          tags:['Growth & Data Tech','AI Bidding','Attribution v3.0','CPA','CR'],
+          summary:'CPA 降幅 -6.2%（超目标），归因模型 v3.0 上线，首存转化率 8.2%→9.1%',summaryEn:'CPA -6.2% (exceeded target), Attribution v3.0 live, first deposit CR 8.2%→9.1%',
+          result:'全球 CPA 同比下降 6.2%（Q1 目标 -5%，超额完成）。归因模型 v3.0 已上线并准确追踪。东南亚 AI 出价试点显示线索质量提升 12%。首存转化率从 8.2% 提升至 9.1%。',
+          resultEn:'Global CPA decreased by 6.2% (Q1 target: -5%, exceeded). Attribution Model v3.0 live and tracking accurately. SEA AI bidding pilot showed 12% improvement in lead quality. First deposit conversion rate increased from 8.2% to 9.1%.',
+          annual:['全球 CPA 同比下降 20%','注册到首存转化率提升 15%','全面部署 AI 驱动出价（Google/Meta）'],annualEn:['Decrease CPA by 20% globally','Increase registration-to-first-deposit CR by 15%','Full deployment of AI-driven bidding across Google and Meta'],
+          metrics:[{label:'CPA 降幅（实际）',labelEn:'CPA Reduction',value:'-6.2%',sub:'目标 -5%',subEn:'Target -5%',good:true,icon:'dollar',accent:true},{label:'归因模型',labelEn:'Attribution v3.0',value:'已上线',valueEn:'Live',good:true,icon:'link'},{label:'AI 出价线索质量',labelEn:'AI Bidding Quality',value:'+12%',good:true,icon:'zap'},{label:'首存转化率',labelEn:'First Deposit CR',value:'9.1%',sub:'原 8.2%',subEn:'Was 8.2%',good:true,icon:'trend'}],
+          status:'🟢',owner:'Leo / Growth Team',
+          improvement:'归因数据显示移动端网页到 App 的旅程存在高流失。Apple Search Ads（ASA）在 Tier 1 市场成本急剧上升。',improvementEn:'Attribution data shows high leakage in mobile web-to-app journey. Apple Search Ads (ASA) costs rising sharply in Tier 1 markets.'},
         {id:'kr2.2',code:'KR 2.2',
-          title:'优化转化漏斗和平台用户体验',titleEn:'Optimize Conversion Funnels and Platform User Experience',
-          tags:['Product Marketing','Tech','UX/UI','App'],
-          summary:'新注册流程上线 3 区域，转化率 +4%，移动端速度 +12%',summaryEn:'New registration live in 3 regions, conv. +4%, mobile speed +12%',
-          result:'注册到入金转化率 +10%。App Store 评分 >4.5。简化「一键注册」已上线。移动端加载速度提升 20%。新流程在已上线区域转化率提升 4%。移动端速度平均提升 12%。',
-          resultEn:'Registration to Deposit conversion +10%. App Store rating >4.5. Simplified "One-Click" registration launched. Mobile loading speed +20%. Conv. rate +4% in regions with new flow. Mobile speed +12% on average.',
-          annual:['注册到入金转化率 +10%','App Store 评分 >4.5'],annualEn:['Registration to Deposit conversion +10%','App Store rating >4.5'],
-          metrics:[{label:'转化率提升',labelEn:'Conversion Rate',value:'+4%',good:true,icon:'trend',accent:true},{label:'移动端速度',labelEn:'Mobile Speed',value:'+12%',good:true,icon:'zap'},{label:'完成度',labelEn:'Completion',value:'70%',icon:'chart'}],
-          owner:'Product Marketing / Tech',
-          improvement:'遗留后端系统的技术债务拖慢了注册流程的全球推广速度',improvementEn:'Technical debt in legacy backend systems is slowing down global rollout of registration flow'},
+          title:'强化「搜+推」协同，提升自然流量占比',titleEn:'Strengthen Systematic SEO/ASO to Scale Organic Visibility',
+          tags:['SEO','ASO','Performance Marketing','Google Algorithm'],
+          summary:'有机流量仅增长 4.5%（目标 10%），新语言中心延迟 1 个月，Google 算法更新冲击',summaryEn:'Organic traffic +4.5% QoQ (target 10%), new language hubs delayed 1 month, Google algorithm impact',
+          result:'有机流量环比增长仅 4.5%（目标 10%，未达标）。新语言内容中心（ES/PT/VI/TH）因翻译质量问题延迟 1 个月。2 月 Google 算法更新对多个信息页面产生负面影响。ASO 可见性评分提升 12%。',
+          resultEn:'Organic traffic growth only 4.5% QoQ (Target: 10%). New language content hubs (ES/PT/VI/TH) delayed by 1 month due to translation quality issues. Google algorithm update in Feb negatively impacted several informational pages. ASO visibility score increased by 12%.',
+          annual:['自然流量占总获客 40%','10 个核心市场「外汇经纪商」关键词 Top 3','ASO 可见性评分提升 50%'],annualEn:['Organic traffic to account for 40% of total acquisitions','Top 3 rankings for "Forex Broker" keywords in 10 key markets','ASO visibility score increase of 50%'],
+          metrics:[{label:'有机流量增长',labelEn:'Organic Traffic',value:'+4.5% QoQ',target:'10%',icon:'trend'},{label:'ASO 可见性',labelEn:'ASO Visibility',value:'+12%',good:true,icon:'chart'},{label:'内容中心状态',labelEn:'Content Hubs',value:'延迟 1 月',valueEn:'Delayed 1 Month',icon:'globe'}],
+          status:'🔴',owner:'David / SEO Team',
+          improvement:'急需 Google 更新后的内容审计和恢复计划。已更换西班牙语/葡萄牙语翻译供应商。需加强高权重外链建设。',improvementEn:'Urgent content audit and recovery plan needed post-Google update. Translation vendor replaced for ES/PT markets. More focus needed on high-authority backlink building.'},
       ]},
-    // ═══ O3: SEO, ASO, SEM ═══
-    {id:'o3',status:'进行中',statusEn:'In Progress',statusColor:T.accent,
-      title:'加强系统化 SEO、ASO、SEM，扩大自然曝光规模',titleEn:'Strengthen Systematic SEO, ASO, SEM to Scale Organic Visibility',
-      subtitle:'SEO 基础设施 · ASO 应用优化',subtitleEn:'SEO Infrastructure · ASO App Optimization',
+    // ═══ O3: Regional Breakthroughs ═══
+    {id:'o3',status:'At Risk',statusEn:'At Risk',statusColor:T.amber,
+      title:'在关键区域实现破局与增长，确立市场领导地位',titleEn:'Achieve Real Breakthroughs in Key Regions; Establish Industry Leader Position',
+      subtitle:'东南亚/拉美市场份额 · 合规与本地化',subtitleEn:'SEA/LATAM Market Share · Compliance & Localization',
       krs:[
         {id:'kr3.1',code:'KR 3.1',
-          title:'建立系统化 SEO 基础设施，提升全球排名',titleEn:'Build Systematic SEO Infrastructure and Improve Global Rankings',
-          tags:['SEO Team','Content','Organic','Backlinks'],
-          summary:'SEO 审计完成，52 个内容中心上线，有机流量 +12%',summaryEn:'SEO audit done, 52 content hubs live, organic traffic +12%',
-          result:'有机流量同比 +50%。500+ 核心关键词 Top 3 排名。外链增长 +30%。SEO 审计已完成。52 个本地化内容中心上线。Q1 有机流量 +12%。115 个核心关键词已进入 Top 3。',
-          resultEn:'Organic traffic +50% YoY target. 500+ core keywords Top 3 rankings. Backlink profile +30%. SEO audit finished. 52 localized content hubs live. Organic traffic +12% in Q1. 115 core keywords now in Top 3.',
-          annual:['有机流量同比 +50%','500+ 核心关键词 Top 3','外链增长 +30%'],annualEn:['Organic traffic +50% YoY','500+ core keywords Top 3','Backlink profile +30%'],
-          metrics:[{label:'Q1 有机流量',labelEn:'Q1 Organic Traffic',value:'+12%',good:true,icon:'trend',accent:true},{label:'Top 3 关键词',labelEn:'Top 3 Keywords',value:'115',icon:'key'},{label:'内容中心',labelEn:'Content Hubs',value:'52',good:true,icon:'globe'}],
-          owner:'SEO / Content Team',
-          improvement:'非英文地区的内容质量需要更严格的 QA；部分内容被标记为 AI 生成',improvementEn:'Content quality in non-English regions needs stricter QA; some AI-generated content was flagged'},
+          title:'在核心市场（SEA/LATAM）实现显著的市场份额增长',titleEn:'Significantly Increase Market Share in SEA/LATAM',
+          tags:['Vietnam','Thailand','Brazil','Mexico','NPS'],
+          summary:'越南份额 +2.4%，墨西哥活动首月 15K 注册，LATAM 入金 +25% QoQ',summaryEn:'Vietnam share +2.4%, Mexico campaign 15K registrations month 1, LATAM deposits +25% QoQ',
+          result:'越南市场份额增长 2.4%。墨西哥「Trading para Todos」活动按时上线，首月 15,000 新注册。东南亚客户满意度 92%（目标 >90%）。拉美入金量环比增长 25%。',
+          resultEn:'Vietnam market share increased by 2.4%. Mexico "Trading para Todos" campaign launched on time; 15,000 new registrations in month 1. SEA customer support satisfaction at 92% (target >90%). LATAM deposit volume grew by 25% QoQ.',
+          annual:['越南和泰国市场份额达 #1','巴西和墨西哥成为 Top 3 经纪商','区域平均 NPS 达 60+'],annualEn:['Achieve #1 market share in Vietnam and Thailand','Establish Vantage as Top 3 broker in Brazil and Mexico','Average regional NPS of 60+'],
+          metrics:[{label:'越南份额增长',labelEn:'Vietnam Share',value:'+2.4%',good:true,icon:'chart',accent:true},{label:'墨西哥新注册',labelEn:'Mexico Registrations',value:'15,000',sub:'首月',subEn:'Month 1',good:true,icon:'users'},{label:'东南亚满意度',labelEn:'SEA Satisfaction',value:'92%',target:'>90%',good:true,icon:'heart'},{label:'拉美入金增长',labelEn:'LATAM Deposits',value:'+25% QoQ',good:true,icon:'trend'}],
+          status:'🟢',owner:'Lin / Carlos (Regional Leads)',
+          improvement:'巴西本地支付网关集成缓慢导致用户流失。墨西哥需要更多西班牙语客户经理处理线索量。',improvementEn:'Local payment gateway integration in Brazil is slow, causing drop-offs. Need more Spanish-speaking account managers to handle lead volume in Mexico.'},
         {id:'kr3.2',code:'KR 3.2',
-          title:'优化 ASO（应用商店优化），推动全球应用增长',titleEn:'Optimize ASO (App Store Optimization) for Global App Growth',
-          tags:['Mobile Marketing','App Store','Google Play'],
-          summary:'素材更新完成，关键词覆盖 +25%，有机安装 +15%',summaryEn:'Assets updated, keyword coverage +25%, organic installs +15%',
-          result:'应用商店有机安装 +40%。关键词可见性评分 >85。Top 10 语言的商店素材已更新。关键词覆盖 +25%。Q1 有机安装 +15%。可见性评分 79。',
-          resultEn:'App Store organic installs +40% target. Keyword visibility score >85. Store assets updated for top 10 languages. Keyword coverage +25%. Organic installs +15% in Q1. Visibility score at 79.',
-          annual:['有机安装 +40%','关键词可见性评分 >85'],annualEn:['App Store organic installs +40%','Keyword visibility score >85'],
-          metrics:[{label:'有机安装增长',labelEn:'Organic Installs',value:'+15%',good:true,icon:'phone',accent:true},{label:'关键词覆盖',labelEn:'Keyword Coverage',value:'+25%',good:true,icon:'key'},{label:'可见性评分',labelEn:'Visibility Score',value:'79',target:'>85',icon:'chart'}],
-          owner:'Mobile Marketing',
-          improvement:'竞争对手在商店中对品牌关键词积极竞价，需要防御性 SEM 策略',improvementEn:'Competitors are aggressive in bidding on brand keywords in stores; need defensive SEM strategy'},
-      ]},
-    // ═══ O4: Key regional breakthroughs ═══
-    {id:'o4',status:'高优先级',statusEn:'High Priority',statusColor:T.amber,
-      title:'在关键地区取得重大突破，确立行业领导地位',titleEn:'Achieve Major Breakthroughs in Key Regions; Establish Industry Leader Position',
-      subtitle:'越南市场 · 阿联酋/海合会市场',subtitleEn:'Vietnam Market · UAE/GCC Market',
-      krs:[
-        {id:'kr4.1',code:'KR 4.1',
-          title:'成为越南顶级经纪商（Top 3）',titleEn:'Become a Top-Tier Broker in Vietnam (Top 3)',
-          tags:['Vietnam','Ho Chi Minh','Localization','Acquisition'],
-          summary:'胡志明市办公室开业，18 名员工入职，市场份额 9%，增长 200%',summaryEn:'HCMC office opened, 18 staff hired, 9% market share, 200% MoM growth',
-          result:'市场份额 >15%。本地团队 >50 人。品牌知名度 >60%。胡志明市办公室已开业。18 名本地员工入职（目标 15）。越南专属活动已上线并超预期表现。Q1 市场份额 9%。3 月获客量环比增长 200%。',
-          resultEn:'Market share >15% target. Local team >50 target. Brand awareness >60%. Ho Chi Minh City office opened. 18 local staff hired (target 15). Vietnam-specific campaign live and over-performing. Market share 9% in Q1. Acquisition volume +200% MoM in March.',
-          annual:['市场份额 >15%','本地团队 >50 人','品牌知名度 >60%'],annualEn:['Market share >15%','Local team >50','Brand awareness >60%'],
-          metrics:[{label:'市场份额',labelEn:'Market Share',value:'9%',target:'>15%',icon:'chart',accent:true},{label:'员工入职',labelEn:'Staff Hired',value:'18',sub:'目标 15',subEn:'Target 15',good:true,icon:'users'},{label:'3月获客增长',labelEn:'March Acquisition',value:'+200% MoM',good:true,icon:'trend'}],
-          owner:'Vietnam Regional Lead',
-          improvement:'本地支付网关稳定性问题，需要备用支付提供商',improvementEn:'Local payment gateway stability issues. Need secondary payment provider.'},
-        {id:'kr4.2',code:'KR 4.2',
-          title:'大幅提高阿联酋/海合会国家市场份额',titleEn:'Significantly Increase Market Share in UAE/GCC',
-          tags:['UAE','Dubai','HNW','IB','AUM'],
-          summary:'4 场 HNW 活动，25 个 IB 签约，AUM +22%，高价值线索 +35%',summaryEn:'4 HNW events, 25 IBs signed, AUM +22%, high-value leads +35%',
-          result:'高净值（HNW）客户数 +50%。本地合作伙伴（IB）+100。迪拜/阿布扎比举办 3 场 HNW 活动。签约 20 个主要 IB。实际：4 场活动已举办，25 个 IB 已签约。UAE 资产管理规模（AUM）Q1 +22%。高价值线索 +35%。',
-          resultEn:'High-net-worth (HNW) client count +50%. Local partnerships (IBs) +100. Host 3 HNW events in Dubai/Abu Dhabi. Sign 20 major IBs. Actual: 4 events held, 25 IBs signed. AUM in UAE +22% in Q1. High-value leads +35%.',
-          annual:['HNW 客户数 +50%','本地 IB +100'],annualEn:['HNW client count +50%','Local IBs +100'],
-          metrics:[{label:'AUM 增长',labelEn:'AUM Growth',value:'+22%',good:true,icon:'trend',accent:true},{label:'IB 签约',labelEn:'IBs Signed',value:'25',sub:'目标 20',subEn:'Target 20',good:true,icon:'users-add'},{label:'HNW 活动',labelEn:'HNW Events',value:'4',sub:'目标 3',subEn:'Target 3',good:true,icon:'target'},{label:'高价值线索',labelEn:'High-Value Leads',value:'+35%',good:true,icon:'zap'}],
-          owner:'MENA Regional Lead',
-          improvement:'HNW 线索的销售跟进流程需要更加个性化',improvementEn:'Sales follow-up process for HNW leads needs to be more personalized'},
+          title:'强化合规与本地化，支撑业务全球化扩张',titleEn:'Strengthen Compliance and Localization to Support Global Expansion',
+          tags:['Compliance','Localization','License','Arabic','Japanese','RTL'],
+          summary:'日语本地化 100% 完成，阿拉伯语因 RTL 问题延迟至 Q2，合规审计 0 重大发现',summaryEn:'Japanese localization 100% done, Arabic delayed to Q2 (RTL issues), compliance audit 0 major findings',
+          result:'新 Tier-1 牌照申请已提交（状态：审核中）。日语 UI/UX 本地化 100% 完成。阿拉伯语本地化因复杂 RTL（从右到左）格式问题延迟至 Q2。合规审计结果：0 重大发现，2 个 minor advisory（已解决）。',
+          resultEn:'New Tier-1 license application submitted (Status: Pending). Japanese UI/UX localization 100% complete. Arabic localization delayed to Q2 due to complex RTL (Right-to-Left) formatting issues. Compliance audit: 0 major findings, 2 minor advisories (resolved).',
+          annual:['获取 2 个新 Tier-1 监管牌照','所有活跃市场 100% 合规','Top 15 市场完成全面本地化（产品+内容）'],annualEn:['Obtain 2 new major Tier-1 regulatory licenses','100% compliance with local marketing regulations across all active markets','Full localization for top 15 markets'],
+          metrics:[{label:'牌照申请',labelEn:'License Application',value:'已提交',valueEn:'Submitted',icon:'shield',accent:true},{label:'日语本地化',labelEn:'Japanese L10n',value:'100%',good:true,icon:'check'},{label:'阿拉伯语本地化',labelEn:'Arabic L10n',value:'延迟至 Q2',valueEn:'Delayed to Q2',icon:'globe'},{label:'合规审计',labelEn:'Compliance Audit',value:'0 重大发现',valueEn:'0 Major Findings',good:true,icon:'shield'}],
+          status:'🟡',owner:'Anna / Ops',
+          improvement:'App 框架中 RTL 技术支持比预估更复杂。需要招聘专业 RTL QA 测试人员。',improvementEn:'RTL technical support within the app framework is more complex than estimated. Need to hire specialized RTL QA testers.'},
       ]},
   ],
   strategy:{
-    title:'Q1 产品/市场策略图',titleEn:'Q1 Product / Market Strategy Map',
+    title:'2026 全球增长战略策略图',titleEn:'2026 Global Growth Strategy Map',
     core:'2026 Q1 增长与品牌战略',coreEn:'2026 Q1 Growth & Brand Strategy',
     pillars:[
-      {title:'品牌与内容',titleEn:'Brand & Content',items:['全球品牌标识 2.0','一级赞助（McLaren F1）','本地化内容中心','视频营销'],itemsEn:['Global Brand Identity 2.0','Tier-1 Sponsorship (McLaren F1)','Localized Content Hubs','Video Marketing'],color:'#4A90D9',icon:'shield'},
-      {title:'增长与绩效',titleEn:'Growth & Performance',items:['精细化用户分层运营','ROI 导向的 SEM/ASO','联盟网络扩展','转化漏斗优化'],itemsEn:['Granular User Ops (Tiering)','ROI-focused SEM/ASO','Affiliate Network Expansion','Funnel Optimization'],color:'#34d399',icon:'trend'},
-      {title:'产品与体验',titleEn:'Product & UX',items:['一键注册流程','移动端速度优化','新交易工具集成','多语言 App 支持'],itemsEn:['One-Click Registration','Mobile Speed Optimization','New Trading Tools Integration','Multi-Language App Support'],color:'#fbbf24',icon:'zap'},
+      {title:'品牌建设',titleEn:'Brand Building',items:['统一全球标识（VIS v2.0 推广）','高影响力活动（UK/AU 启动→全球扩展）','思想领导力（KOL 计划 & 全球研讨会）','社区参与（Vantage Rewards 上线）'],itemsEn:['Unified Global Identity (VIS v2.0 rollout)','High-Impact Campaigns (UK/AU Launch → Global)','Thought Leadership (KOL program & Webinars)','Community Engagement (Vantage Rewards)'],color:'#4A90D9',icon:'shield'},
+      {title:'增长与效率',titleEn:'Performance & Efficiency',items:['AI 驱动增长（Google/Meta AI 出价）','数据基础设施（归因模型 v3.0，CRM 集成）','自然流量主导（SEO 内容中心，ASO 优化）','漏斗优化（注册到入金转化提升）'],itemsEn:['AI-Driven Growth (AI bidding in Google/Meta)','Data Infrastructure (Attribution v3.0, CRM)','Organic Dominance (SEO hubs, ASO optimization)','Funnel Optimization (Reg-to-deposit conversion)'],color:'#34d399',icon:'trend'},
+      {title:'区域破局',titleEn:'Regional Breakthrough',items:['规模化本地化（内容/支付/客服本地化）','东南亚领导地位（巩固 VN/TH 市场份额）','拉美扩张（墨西哥成功扩展至巴西/哥伦比亚）','监管合规（获取新 Tier-1 牌照）'],itemsEn:['Localization at Scale (Content, payment, support)','SEA Leadership (Consolidate VN/TH market share)','LATAM Expansion (Scale Mexico to Brazil/Colombia)','Regulatory Compliance (Secure new Tier-1 licenses)'],color:'#fbbf24',icon:'map'},
     ],
-    execution:[
-      {title:'区域扩张',titleEn:'Regional Expansion',items:['越南市场突击战','UAE/GCC HNW 策略','拉美品牌重塑','东南亚留存计划'],itemsEn:['Vietnam Market Blitz','UAE/GCC HNW Strategy','LATAM Re-branding','SEA Retention Program'],color:'#f87171',icon:'map'},
-    ],
+    execution:[],
   },
   areas:{title:'Q2 重点改进方向',titleEn:'Q2 Key Improvement Areas',items:[
-    {cn:'中层管理角色交接加速，减少沟通摩擦',en:'Accelerate middle management role transitions to reduce communication friction'},
-    {cn:'全球品牌团队与本地 IT 执行团队加强协调',en:'Improve coordination between global brand team and local IT execution teams'},
-    {cn:'东南亚活动本地化创意优化',en:'Optimize localized creative for SEA campaigns'},
-    {cn:'低存款用户入门引导流程改进',en:'Improve onboarding flow for low-deposit users'},
-    {cn:'遗留后端系统技术债务清理，加速注册流程全球推广',en:'Clear legacy backend tech debt to accelerate global registration rollout'},
-    {cn:'非英文地区内容质量 QA 加强',en:'Strengthen content QA for non-English regions'},
-    {cn:'品牌关键词防御性 SEM 策略',en:'Implement defensive SEM strategy for brand keywords'},
-    {cn:'越南备用支付提供商接入',en:'Integrate secondary payment provider for Vietnam'},
-    {cn:'HNW 线索销售跟进流程个性化',en:'Personalize HNW lead sales follow-up process'},
+    {cn:'UK 法律审批流程优化，避免品牌活动延迟',en:'Optimize UK legal approval process to avoid brand campaign delays'},
+    {cn:'德国市场素材深度本地化',en:'Deep localization of assets for German market'},
+    {cn:'社交媒体互动率提升至 2.5%（当前 1.2%）',en:'Improve social media engagement rate to 2.5% (currently 1.2%)'},
+    {cn:'Twitter（X）西方市场新内容策略制定',en:'Develop new content strategy for Twitter (X) in Western markets'},
+    {cn:'Google 算法更新后内容审计与恢复',en:'Content audit and recovery plan post-Google algorithm update'},
+    {cn:'移动端网页到 App 旅程流失修复',en:'Fix mobile web-to-app journey leakage'},
+    {cn:'巴西支付网关集成加速',en:'Accelerate Brazil payment gateway integration'},
+    {cn:'阿拉伯语 RTL 技术方案落地 + QA 招聘',en:'Implement Arabic RTL technical solution + hire QA testers'},
+    {cn:'新兴市场本地化奖励方案设计',en:'Design localized rewards for emerging markets'},
   ]},
+  nextReviewDate:'2026.07.10',
 };
 
 // ═══ Hero ═══
@@ -570,7 +555,7 @@ function TopNav({active}){
     const fn=()=>{if(!ticking){requestAnimationFrame(()=>{nav.classList.toggle('scrolled',window.scrollY>window.innerHeight*.7);ticking=false;});ticking=true;}};
     window.addEventListener('scroll',fn,{passive:true});return()=>window.removeEventListener('scroll',fn);
   },[]);
-  const items=[{id:'o1',label:'O1',full:'品牌'},{id:'o2',label:'O2',full:'增长'},{id:'o3',label:'O3',full:'SEO'},{id:'o4',label:'O4',full:'突破'},{id:'strategy',label:'战略',full:''},{id:'areas',label:'Q2',full:'改进'}];
+  const items=[{id:'o1',label:'O1',full:'品牌'},{id:'o2',label:'O2',full:'增长'},{id:'o3',label:'O3',full:'突破'},{id:'strategy',label:'战略',full:''},{id:'areas',label:'Q2',full:'改进'}];
   return(
     <nav ref={navRef} className="top-nav">
       <div style={{maxWidth:1100,margin:'0 auto',padding:'0 40px',display:'flex',alignItems:'center',height:52,justifyContent:'space-between'}}>
@@ -750,7 +735,32 @@ function App(){
       <HeroSection key="hero-post-login"/>
       <TopNav active={activeSection}/>
       <main style={{maxWidth:1060,margin:'0 auto',padding:'0 44px 120px'}}>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(6,1fr)',gap:14,marginBottom:48,paddingTop:40}}>
+        {/* Status Legend */}
+        <div className="sec-anim" style={{display:'flex',gap:24,justifyContent:'center',paddingTop:32,marginBottom:8}}>
+          {DATA.statusLegend.map((s,i)=>(
+            <div key={i} style={{display:'flex',alignItems:'center',gap:6}}>
+              <div style={{width:8,height:8,borderRadius:4,background:s.color,boxShadow:`0 0 8px ${s.color}40`}}/>
+              <span style={{fontSize:10,color:T.textSec,fontFamily:T.font.en}}>{s.label}</span>
+              <span style={{fontSize:9,color:T.textMuted,fontFamily:T.font.cn}}>{s.desc}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Summary Metrics */}
+        <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16,marginBottom:20}}>
+          {DATA.summaryMetrics.map((m,i)=>(
+            <div key={i} className={`sec-anim d${i+1} glow-card`} style={{background:T.bgCard,borderRadius:T.r.lg,padding:'22px 20px',border:`1px solid ${T.border}`,textAlign:'center'}}>
+              <div style={{marginBottom:8}}><Icon name={m.icon} size={22} color={m.good?T.green:T.accentLight} glow/></div>
+              <div className="num-glow" style={{fontSize:30,fontWeight:700,fontFamily:T.font.mono,color:m.good?T.green:T.accentLight}}><Ed>{m.value}</Ed></div>
+              <div style={{fontSize:12,color:T.text,marginTop:6,fontWeight:500,fontFamily:T.font.cn}}><Ed>{m.label}</Ed></div>
+              <div style={{fontSize:10,color:T.textSec,fontFamily:T.font.en,marginTop:2}}><Ed>{m.labelEn}</Ed></div>
+              {m.sub&&<div style={{fontSize:9,color:T.textMuted,marginTop:4}}><Ed>{m.sub}</Ed> <span style={{fontFamily:T.font.en}}><Ed>{m.subEn}</Ed></span></div>}
+            </div>
+          ))}
+        </div>
+
+        {/* Headline Metrics */}
+        <div style={{display:'grid',gridTemplateColumns:'repeat(6,1fr)',gap:14,marginBottom:48}}>
           {DATA.headlineMetrics.map((m,i)=>(
             <div key={i} className={`sec-anim d${i+1} glow-card`} style={{background:T.bgCard,borderRadius:T.r.md,padding:'20px 14px',border:`1px solid ${T.border}`,textAlign:'center'}}>
               <div style={{marginBottom:8}}><Icon name={m.icon} size={22} color={m.good?T.green:T.accentLight} glow/></div>
@@ -842,6 +852,7 @@ function App(){
 
         <div style={{textAlign:'center',padding:'80px 0 20px',borderTop:`1px solid ${T.border}`,marginTop:80}}>
           <div style={{fontSize:10,color:T.textMuted,fontFamily:T.font.en}}>{DATA.date} · Global Marketing Team · Confidential · Internal Use Only</div>
+          <div style={{fontSize:10,color:T.accentLight,fontFamily:T.font.en,marginTop:6,opacity:0.5}}>Next Review: {DATA.nextReviewDate} (Q2 Review)</div>
         </div>
       </main>
       <SaveBar/>
